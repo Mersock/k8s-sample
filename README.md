@@ -6,6 +6,7 @@
 kubectl create secret generic pgpassword --from-literal=PGPASSWORD=postgres_password
 ````
 
+## Apply on local.
 ````
  kubectl apply -f k8s/
 ````
