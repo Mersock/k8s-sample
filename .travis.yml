@@ -12,3 +12,15 @@ before_install:
   - gcloud config set project k8s-sample-279610
   - gcloud config set compute/zone asia-southeast1-a
   - gcloud container clusters get-credentials  k8s-sample-cluster	
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  #Build Image 
+  - docker build -t mersock/simple-k8s-client -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run mersock/simple-k8s-client npm test -- --coverage
+
+deploy:
+  provider: script
+  script: bash ./deploy.sh
+  on:
+    branch: master  
