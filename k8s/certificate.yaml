@@ -15,6 +15,6 @@ spec:
     config:
       - http01: 
           ingressClass: nginx
-      domains:
-        - k8s-sample.com
-        - www.k8s-sample.com
+        domains:
+          - k8s-sample.com
+          - www.k8s-sample.com
